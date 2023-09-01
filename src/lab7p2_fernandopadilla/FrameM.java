@@ -24,15 +24,15 @@ public class FrameM extends javax.swing.JFrame {
     public FrameM() {
         initComponents();
     }
-    
+
     ArrayList<Vehiculo> carros = new ArrayList();
     ArrayList<Vendedor> vendedores = new ArrayList();
     ArrayList<Cliente> clientes = new ArrayList();
-    
+
     int idCarro = 0;
-    
-    private void inicializaridCarro(){
-        
+
+    private void inicializaridCarro() {
+
     }
 
     /**
@@ -62,7 +62,22 @@ public class FrameM extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        tf_cantCV = new javax.swing.JTextField();
+        tf_dineroG = new javax.swing.JTextField();
+        tf_nombreVendedor = new javax.swing.JTextField();
+        btn_crearVendedor = new javax.swing.JButton();
         panel_crearCliente = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        tf_nombreCliente = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        tf_profesion = new javax.swing.JTextField();
+        btn_crearCliente = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        tf_cantCC = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        tf_sueldo = new javax.swing.JTextField();
+        jSpinner_edad = new javax.swing.JSpinner();
         panel_asignarV = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -167,6 +182,13 @@ public class FrameM extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Cantidad de Dinero Generado");
 
+        btn_crearVendedor.setText("Agregar");
+        btn_crearVendedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_crearVendedorMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel_crearVendedorLayout = new javax.swing.GroupLayout(panel_crearVendedor);
         panel_crearVendedor.setLayout(panel_crearVendedorLayout);
         panel_crearVendedorLayout.setHorizontalGroup(
@@ -174,36 +196,133 @@ public class FrameM extends javax.swing.JFrame {
             .addGroup(panel_crearVendedorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panel_crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addContainerGap(447, Short.MAX_VALUE))
+                    .addComponent(btn_crearVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panel_crearVendedorLayout.createSequentialGroup()
+                        .addGroup(panel_crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addGroup(panel_crearVendedorLayout.createSequentialGroup()
+                                .addGroup(panel_crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(panel_crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_crearVendedorLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tf_dineroG, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panel_crearVendedorLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(panel_crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tf_nombreVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tf_cantCV, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(0, 173, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         panel_crearVendedorLayout.setVerticalGroup(
             panel_crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_crearVendedorLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel6)
+                .addGap(49, 49, 49)
+                .addGroup(panel_crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addComponent(tf_nombreVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(panel_crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(tf_cantCV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel8)
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addGroup(panel_crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(tf_dineroG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(110, 110, 110)
+                .addComponent(btn_crearVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Agregar Vendedor", panel_crearVendedor);
 
         panel_crearCliente.setBackground(new java.awt.Color(0, 102, 102));
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setText("Nombre");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setText("Edad");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setText("Profesion");
+
+        btn_crearCliente.setText("Agregar");
+        btn_crearCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_crearClienteMouseClicked(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setText("Cant. Carros Comprados");
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel13.setText("Sueldo Disp.");
+
+        jSpinner_edad.setModel(new javax.swing.SpinnerNumberModel(18, 18, null, 1));
+
         javax.swing.GroupLayout panel_crearClienteLayout = new javax.swing.GroupLayout(panel_crearCliente);
         panel_crearCliente.setLayout(panel_crearClienteLayout);
         panel_crearClienteLayout.setHorizontalGroup(
             panel_crearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 642, Short.MAX_VALUE)
+            .addGroup(panel_crearClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_crearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_crearCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panel_crearClienteLayout.createSequentialGroup()
+                        .addGroup(panel_crearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panel_crearClienteLayout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tf_nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panel_crearClienteLayout.createSequentialGroup()
+                                .addGroup(panel_crearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addGroup(panel_crearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_profesion, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSpinner_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panel_crearClienteLayout.createSequentialGroup()
+                                .addGroup(panel_crearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel13))
+                                .addGap(18, 18, 18)
+                                .addGroup(panel_crearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_sueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tf_cantCC, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 206, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         panel_crearClienteLayout.setVerticalGroup(
             panel_crearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
+            .addGroup(panel_crearClienteLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(panel_crearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9)
+                    .addComponent(tf_nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(panel_crearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jSpinner_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel_crearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(tf_profesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel_crearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(tf_cantCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(panel_crearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(tf_sueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(btn_crearCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Agregar Cliente", panel_crearCliente);
@@ -261,7 +380,7 @@ public class FrameM extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (tf_marca.getText().isEmpty() || tf_modelo.getText().isEmpty() || tf_precio.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos los parametros deben estar completos");
-        }else{
+        } else {
             String marca = tf_marca.getText();
             Color color = btn_color.getBackground();
             String modelo = tf_modelo.getText();
@@ -275,13 +394,13 @@ public class FrameM extends javax.swing.JFrame {
             BufferedWriter bw = null;
             try {
                 file = new File("./Carros.txt");
-                fw = new FileWriter(file,true);
+                fw = new FileWriter(file, true);
                 bw = new BufferedWriter(fw);
                 String lineas = "[\n"
-                        + "\t"+marca+",\n"
-                        + "\t"+modelo+",\n"
-                        + "\t"+año+",\n"
-                        + "\t"+precioV+"\n]\n";
+                        + "\t" + marca + ",\n"
+                        + "\t" + modelo + ",\n"
+                        + "\t" + año + ",\n"
+                        + "\t" + precioV + "\n]\n";
                 bw.write(lineas);
                 bw.flush();
                 fw.close();
@@ -297,7 +416,44 @@ public class FrameM extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_crearVehiculoMouseClicked
 
-    
+    private void btn_crearVendedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crearVendedorMouseClicked
+        // TODO add your handling code here:
+        if (tf_nombreVendedor.getText().isEmpty() || tf_cantCC.getText().isEmpty() || tf_dineroG.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Todos los parametros deben estar llenos");
+        } else {
+            String nombre = tf_nombreVendedor.getText();
+            int cantCV = Integer.parseInt(tf_cantCC.getText());
+            double cantDG = Double.parseDouble(tf_dineroG.getText());
+            vendedores.add(new Vendedor(nombre, cantCV, cantDG));
+            File file = null;
+            FileWriter fw = null;
+            BufferedWriter bw = null;
+            try {
+                file = new File("./Carros.txt");
+                fw = new FileWriter(file, true);
+                bw = new BufferedWriter(fw);
+                String lineas = "[\n"
+                        + "\t" + nombre + ",\n"
+                        + "\t" + cantCV + ",\n"
+                        + "\t" + cantDG + "\n]\n";
+                bw.write(lineas);
+                bw.flush();
+                fw.close();
+                bw.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            JOptionPane.showMessageDialog(this, "Agregado exitosamente");
+        }
+    }//GEN-LAST:event_btn_crearVendedorMouseClicked
+
+    private void btn_crearClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crearClienteMouseClicked
+        // TODO add your handling code here:
+        String nombre = tf_nombreCliente.getText();
+        int edad = (int)jSpinner_edad.getValue();
+        String profesion = tf_profesion.getText();
+    }//GEN-LAST:event_btn_crearClienteMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -335,8 +491,14 @@ public class FrameM extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_color;
+    private javax.swing.JButton btn_crearCliente;
     private javax.swing.JButton btn_crearVehiculo;
+    private javax.swing.JButton btn_crearVendedor;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -344,15 +506,24 @@ public class FrameM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner jSpinner_edad;
     private javax.swing.JTabbedPane jTabbedPane1;
     private com.toedter.calendar.JYearChooser jYearChooser1;
     private javax.swing.JPanel panel_asignarV;
     private javax.swing.JPanel panel_crearCliente;
     private javax.swing.JPanel panel_crearVehiculo;
     private javax.swing.JPanel panel_crearVendedor;
+    private javax.swing.JTextField tf_cantCC;
+    private javax.swing.JTextField tf_cantCV;
+    private javax.swing.JTextField tf_dineroG;
     private javax.swing.JTextField tf_marca;
     private javax.swing.JTextField tf_modelo;
+    private javax.swing.JTextField tf_nombreCliente;
+    private javax.swing.JTextField tf_nombreVendedor;
     private javax.swing.JTextField tf_precio;
+    private javax.swing.JTextField tf_profesion;
+    private javax.swing.JTextField tf_sueldo;
     // End of variables declaration//GEN-END:variables
 }
