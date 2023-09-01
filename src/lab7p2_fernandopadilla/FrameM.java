@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
@@ -337,6 +338,11 @@ public class FrameM extends javax.swing.JFrame {
         panel_asignarV.setBackground(new java.awt.Color(0, 102, 102));
 
         btn_vender.setText("Vender");
+        btn_vender.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_venderMouseClicked(evt);
+            }
+        });
 
         jLabel14.setText("Vendedor");
 
@@ -442,6 +448,7 @@ public class FrameM extends javax.swing.JFrame {
             String año = String.valueOf(ft);
             double precioV = Double.parseDouble(tf_precio.getText());
             carros.add(new Vehiculo(marca, color, modelo, año, precioV, idCarro));
+            cb_carro.setModel(actualizarcbCarro());
             idCarro++;
             File file = null;
             FileWriter fw = null;
@@ -479,6 +486,7 @@ public class FrameM extends javax.swing.JFrame {
             int cantCV = Integer.parseInt(tf_cantCC.getText());
             double cantDG = Double.parseDouble(tf_dineroG.getText());
             vendedores.add(new Vendedor(nombre, cantCV, cantDG));
+            cb_Vendedor.setModel(actualizarcbVendedor());
             File file = null;
             FileWriter fw = null;
             BufferedWriter bw = null;
@@ -509,6 +517,7 @@ public class FrameM extends javax.swing.JFrame {
         int cantCC = Integer.parseInt(tf_cantCC.getText());
         double sueldoD = Double.parseDouble(tf_sueldo.getText());
         clientes.add(new Cliente(nombre, edad, profesion, cantCC, sueldoD));
+        cb_Cliente.setModel(actualizarcbCliente());
         File file = null;
         FileWriter fw = null;
         BufferedWriter bw = null;
@@ -533,6 +542,33 @@ public class FrameM extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_crearClienteMouseClicked
 
+    private void btn_venderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_venderMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_venderMouseClicked
+
+    public DefaultComboBoxModel actualizarcbCarro(){
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (Vehiculo t : carros) {
+            modelo.addElement(t);
+        }
+        return modelo;
+    }
+    
+    public DefaultComboBoxModel actualizarcbVendedor(){
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (Vendedor t : vendedores) {
+            modelo.addElement(t);
+        }
+        return modelo;
+    }
+    
+    public DefaultComboBoxModel actualizarcbCliente(){
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (Cliente t : clientes) {
+            modelo.addElement(t);
+        }
+        return modelo;
+    }
     /**
      * @param args the command line arguments
      */
