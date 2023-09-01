@@ -79,6 +79,13 @@ public class FrameM extends javax.swing.JFrame {
         tf_sueldo = new javax.swing.JTextField();
         jSpinner_edad = new javax.swing.JSpinner();
         panel_asignarV = new javax.swing.JPanel();
+        cb_Vendedor = new javax.swing.JComboBox<>();
+        cb_Cliente = new javax.swing.JComboBox<>();
+        cb_carro = new javax.swing.JComboBox<>();
+        btn_vender = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -329,15 +336,62 @@ public class FrameM extends javax.swing.JFrame {
 
         panel_asignarV.setBackground(new java.awt.Color(0, 102, 102));
 
+        btn_vender.setText("Vender");
+
+        jLabel14.setText("Vendedor");
+
+        jLabel15.setText("Cliente");
+
+        jLabel16.setText("Carro");
+
         javax.swing.GroupLayout panel_asignarVLayout = new javax.swing.GroupLayout(panel_asignarV);
         panel_asignarV.setLayout(panel_asignarVLayout);
         panel_asignarVLayout.setHorizontalGroup(
             panel_asignarVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 642, Short.MAX_VALUE)
+            .addGroup(panel_asignarVLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(cb_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addComponent(cb_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_asignarVLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_vender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(panel_asignarVLayout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel15)
+                .addGap(143, 143, 143))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_asignarVLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panel_asignarVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_asignarVLayout.createSequentialGroup()
+                        .addComponent(cb_carro, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(212, 212, 212))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_asignarVLayout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(302, 302, 302))))
         );
         panel_asignarVLayout.setVerticalGroup(
             panel_asignarVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
+            .addGroup(panel_asignarVLayout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addGroup(panel_asignarVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_asignarVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_carro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94)
+                .addComponent(btn_vender, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Asignar Venta", panel_asignarV);
@@ -519,11 +573,18 @@ public class FrameM extends javax.swing.JFrame {
     private javax.swing.JButton btn_crearCliente;
     private javax.swing.JButton btn_crearVehiculo;
     private javax.swing.JButton btn_crearVendedor;
+    private javax.swing.JButton btn_vender;
+    private javax.swing.JComboBox<String> cb_Cliente;
+    private javax.swing.JComboBox<String> cb_Vendedor;
+    private javax.swing.JComboBox<String> cb_carro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
