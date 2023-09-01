@@ -429,7 +429,7 @@ public class FrameM extends javax.swing.JFrame {
             FileWriter fw = null;
             BufferedWriter bw = null;
             try {
-                file = new File("./Carros.txt");
+                file = new File("./Vendedores.txt");
                 fw = new FileWriter(file, true);
                 bw = new BufferedWriter(fw);
                 String lineas = "[\n"
@@ -450,8 +450,33 @@ public class FrameM extends javax.swing.JFrame {
     private void btn_crearClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crearClienteMouseClicked
         // TODO add your handling code here:
         String nombre = tf_nombreCliente.getText();
-        int edad = (int)jSpinner_edad.getValue();
+        int edad = (int) jSpinner_edad.getValue();
         String profesion = tf_profesion.getText();
+        int cantCC = Integer.parseInt(tf_cantCC.getText());
+        double sueldoD = Double.parseDouble(tf_sueldo.getText());
+        clientes.add(new Cliente(nombre, edad, profesion, cantCC, sueldoD));
+        File file = null;
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        try {
+            file = new File("./Clientes.txt");
+            fw = new FileWriter(file, true);
+            bw = new BufferedWriter(fw);
+            String lineas = "[\n"
+                    + "\t" + nombre + ",\n"
+                    + "\t" + edad + ",\n"
+                    + "\t" + profesion + ",\n"
+                    + "\t" + cantCC + ",\n"
+                    + "\t" + sueldoD + "\n]\n";
+            bw.write(lineas);
+            bw.flush();
+            fw.close();
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(this, "Agregado exitosamente");
+
     }//GEN-LAST:event_btn_crearClienteMouseClicked
 
     /**
