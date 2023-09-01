@@ -57,9 +57,9 @@ public class FrameM extends javax.swing.JFrame {
         tf_modelo = new javax.swing.JTextField();
         tf_marca = new javax.swing.JTextField();
         tf_precio = new javax.swing.JTextField();
-        btn_color = new javax.swing.JButton();
         jYearChooser1 = new com.toedter.calendar.JYearChooser();
         btn_crearVehiculo = new javax.swing.JButton();
+        tf_color = new javax.swing.JTextField();
         panel_crearVendedor = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -88,6 +88,11 @@ public class FrameM extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTree2 = new javax.swing.JTree();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,13 +114,6 @@ public class FrameM extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Precio");
-
-        btn_color.setForeground(new java.awt.Color(0, 0, 0));
-        btn_color.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_colorMouseClicked(evt);
-            }
-        });
 
         btn_crearVehiculo.setText("Crear");
         btn_crearVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -139,13 +137,12 @@ public class FrameM extends javax.swing.JFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
-                        .addGroup(panel_crearVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_crearVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tf_modelo)
-                                .addComponent(tf_marca, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(tf_precio, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(btn_color, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panel_crearVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_modelo)
+                            .addComponent(tf_marca, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                            .addComponent(tf_precio, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                            .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_color))
                         .addGap(0, 372, Short.MAX_VALUE))
                     .addComponent(btn_crearVehiculo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -158,9 +155,9 @@ public class FrameM extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(tf_marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addGroup(panel_crearVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_color, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panel_crearVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tf_color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panel_crearVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -241,7 +238,7 @@ public class FrameM extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(tf_dineroG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(110, 110, 110)
-                .addComponent(btn_crearVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addComponent(btn_crearVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -330,7 +327,7 @@ public class FrameM extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(tf_sueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addComponent(btn_crearCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addComponent(btn_crearCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -397,11 +394,46 @@ public class FrameM extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cb_carro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(94, 94, 94)
-                .addComponent(btn_vender, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addComponent(btn_vender, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Asignar Venta", panel_asignarV);
+
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Admin");
+        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane1.setViewportView(jTree1);
+
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Dia");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Venta");
+        treeNode1.add(treeNode2);
+        jTree2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane2.setViewportView(jTree2);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(238, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Trees  y Finalizar Actividad", jPanel2);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -432,18 +464,13 @@ public class FrameM extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_colorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_colorMouseClicked
-        // TODO add your handling code here:
-        btn_color.setBackground(JColorChooser.showDialog(this, "Escoger un color", Color.yellow));
-    }//GEN-LAST:event_btn_colorMouseClicked
-
     private void btn_crearVehiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crearVehiculoMouseClicked
         // TODO add your handling code here:
         if (tf_marca.getText().isEmpty() || tf_modelo.getText().isEmpty() || tf_precio.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos los parametros deben estar completos");
         } else {
             String marca = tf_marca.getText();
-            Color color = btn_color.getBackground();
+            String color = tf_color.getText();
             String modelo = tf_modelo.getText();
             int ft = jYearChooser1.getYear();
             String año = String.valueOf(ft);
@@ -460,6 +487,7 @@ public class FrameM extends javax.swing.JFrame {
                 bw = new BufferedWriter(fw);
                 String lineas = "[\n"
                         + "\t" + marca + ",\n"
+                        + "\t" + color + ",\n"
                         + "\t" + modelo + ",\n"
                         + "\t" + año + ",\n"
                         + "\t" + precioV + "\n]\n";
@@ -474,7 +502,7 @@ public class FrameM extends javax.swing.JFrame {
             tf_marca.setText("");
             tf_modelo.setText("");
             tf_precio.setText("");
-            btn_color.setBackground(Color.WHITE);
+            tf_color.setText("");
         }
     }//GEN-LAST:event_btn_crearVehiculoMouseClicked
 
@@ -617,7 +645,6 @@ public class FrameM extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_color;
     private javax.swing.JButton btn_crearCliente;
     private javax.swing.JButton btn_crearVehiculo;
     private javax.swing.JButton btn_crearVendedor;
@@ -642,8 +669,13 @@ public class FrameM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner_edad;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTree jTree1;
+    private javax.swing.JTree jTree2;
     private com.toedter.calendar.JYearChooser jYearChooser1;
     private javax.swing.JPanel panel_asignarV;
     private javax.swing.JPanel panel_crearCliente;
@@ -651,6 +683,7 @@ public class FrameM extends javax.swing.JFrame {
     private javax.swing.JPanel panel_crearVendedor;
     private javax.swing.JTextField tf_cantCC;
     private javax.swing.JTextField tf_cantCV;
+    private javax.swing.JTextField tf_color;
     private javax.swing.JTextField tf_dineroG;
     private javax.swing.JTextField tf_marca;
     private javax.swing.JTextField tf_modelo;
