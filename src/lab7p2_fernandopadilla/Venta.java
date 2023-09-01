@@ -6,15 +6,17 @@ public class Venta {
     private String vendedor, cliente;
     private double costo;
     private String carroV;
+    private int idCarro;
 
     public Venta() {
     }
 
-    public Venta(String vendedor, String cliente, double costo, String carroV) {
+    public Venta(String vendedor, String cliente, double costo, String carroV,int idCarro) {
         this.vendedor = vendedor;
         this.cliente = cliente;
         this.costo = costo;
         this.carroV = carroV;
+        this.idCarro = idCarro;
     }
 
     public String getVendedor() {
@@ -48,6 +50,15 @@ public class Venta {
     public void setCarroV(String carroV) {
         this.carroV = carroV;
     }
+
+    public int getIdCarro() {
+        return idCarro;
+    }
+
+    public void setIdCarro(int idCarro) {
+        this.idCarro = idCarro;
+    }
+    
 
     @Override
     public String toString() {

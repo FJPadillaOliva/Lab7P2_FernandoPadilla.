@@ -1,0 +1,12 @@
+[
+	Jesus,
+	Fernando,
+	Toyota Corolla,
+	150000.0
+]
+[
+	Jesus,
+	Cooper,
+	Tesla Model X,
+	500000.0
+]
