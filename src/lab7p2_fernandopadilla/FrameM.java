@@ -29,6 +29,7 @@ public class FrameM extends javax.swing.JFrame {
     ArrayList<Vehiculo> carros = new ArrayList();
     ArrayList<Vendedor> vendedores = new ArrayList();
     ArrayList<Cliente> clientes = new ArrayList();
+    ArrayList<Venta> ventas = new ArrayList();
 
     int idCarro = 0;
 
@@ -544,6 +545,17 @@ public class FrameM extends javax.swing.JFrame {
 
     private void btn_venderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_venderMouseClicked
         // TODO add your handling code here:
+        if (cb_Cliente.getSelectedIndex() >=0 || cb_Vendedor.getSelectedIndex() >= 0 || cb_carro.getSelectedIndex() >= 0) {
+            Cliente cliente = clientes.get(cb_Cliente.getSelectedIndex());
+            Vendedor vendedor = vendedores.get(cb_Vendedor.getSelectedIndex());
+            Vehiculo carro = carros.get(cb_carro.getSelectedIndex());
+            String vend = vendedor.getNombre();
+            String client = cliente.getNombre();
+            String carroV = carro.getMarca() + " "+ carro.getModelo();
+            double costo = carro.getPrecioV();
+            ventas.add(new Venta(vend, client, costo , carroV));
+            JOptionPane.showMessageDialog(this, "Venta realizada exitosamente");
+        }
     }//GEN-LAST:event_btn_venderMouseClicked
 
     public DefaultComboBoxModel actualizarcbCarro(){
