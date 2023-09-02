@@ -775,7 +775,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTree" name="jTree2">
+                    <Component class="javax.swing.JTree" name="TreeAct">
                       <Properties>
                         <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
                           <TreeModel code="Dia&#xa; Venta&#xa;"/>
@@ -796,6 +796,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Actualizar Tree de Actividad"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_actualizartree1MouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btn_actualizartree2">
                   <Properties>

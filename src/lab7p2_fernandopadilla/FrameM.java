@@ -17,6 +17,8 @@ import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -49,11 +51,11 @@ public class FrameM extends javax.swing.JFrame {
     int idCarro = 1;
 
     public void inicializarListaCarro() {
-        
+
         try {
             File file = new File("./Carros.txt");
             ArrayList<ArrayList<String>> listas = obtenerListas(file);
-            for (ArrayList<String> t : listas) {   
+            for (ArrayList<String> t : listas) {
                 if (t.size() == 6) {
                     String marca = t.get(0).replace(",", "");
                     String color = t.get(1).replace(",", "");
@@ -68,13 +70,13 @@ public class FrameM extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private void inicializarListaVendedor() {
-        
+
         try {
             File file = new File("./Vendedores.txt");
             ArrayList<ArrayList<String>> listas = obtenerListas(file);
-            for (ArrayList<String> t : listas) {   
+            for (ArrayList<String> t : listas) {
                 if (t.size() == 3) {
                     String nombre = t.get(0).replace(",", "");
                     String CV = t.get(1).replace(",", "");
@@ -86,13 +88,13 @@ public class FrameM extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private void inicializarListaCliente() {
-        
+
         try {
             File file = new File("./Clientes.txt");
             ArrayList<ArrayList<String>> listas = obtenerListas(file);
-            for (ArrayList<String> t : listas) {   
+            for (ArrayList<String> t : listas) {
                 if (t.size() == 5) {
                     String nombre = t.get(0).replace(",", "");
                     String edad = t.get(1).replace(",", "");
@@ -106,13 +108,13 @@ public class FrameM extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private void inicializarListaVenta() {
-        
+
         try {
             File file = new File("./Ventas.txt");
             ArrayList<ArrayList<String>> listas = obtenerListas(file);
-            for (ArrayList<String> t : listas) {   
+            for (ArrayList<String> t : listas) {
                 if (t.size() == 5) {
                     String vendedor = t.get(0).replace(",", "");
                     String cliente = t.get(1).replace(",", "");
@@ -217,7 +219,7 @@ public class FrameM extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTree2 = new javax.swing.JTree();
+        TreeAct = new javax.swing.JTree();
         btn_finalizar = new javax.swing.JButton();
         btn_actualizartree1 = new javax.swing.JButton();
         btn_actualizartree2 = new javax.swing.JButton();
@@ -589,8 +591,8 @@ public class FrameM extends javax.swing.JFrame {
         treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Dia");
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Venta");
         treeNode1.add(treeNode2);
-        jTree2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane2.setViewportView(jTree2);
+        TreeAct.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane2.setViewportView(TreeAct);
 
         btn_finalizar.setText("Finalizar Dia");
         btn_finalizar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -600,6 +602,11 @@ public class FrameM extends javax.swing.JFrame {
         });
 
         btn_actualizartree1.setText("Actualizar Tree de Actividad");
+        btn_actualizartree1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_actualizartree1MouseClicked(evt);
+            }
+        });
 
         btn_actualizartree2.setText("Actualizar Tree de Admin");
 
@@ -822,7 +829,7 @@ public class FrameM extends javax.swing.JFrame {
                         + "\t" + client + ",\n"
                         + "\t" + carroV + ",\n"
                         + "\t" + costo + ",\n"
-                        + "\t" +idCarro +"\n];\n";
+                        + "\t" + idCarro + "\n];\n";
                 bw.write(lineas);
                 bw.flush();
                 fw.close();
@@ -920,6 +927,51 @@ public class FrameM extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_editarJSONMouseClicked
 
+    private void btn_actualizartree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_actualizartree1MouseClicked
+        // TODO add your handling code here:
+        modeloDefault();
+        DefaultTreeModel m = (DefaultTreeModel) TreeAct.getModel();
+        DefaultMutableTreeNode raiz
+                = (DefaultMutableTreeNode) m.getRoot();
+        try {
+            JFileChooser jfc = new JFileChooser("./");
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo de texto", "txt");
+            jfc.setFileFilter(filtro);
+            File file = null;
+            FileReader fr = null;
+            BufferedReader br = null;
+            int select = jfc.showOpenDialog(this);
+            if (select == JFileChooser.APPROVE_OPTION) {
+                file = jfc.getSelectedFile();
+                ArrayList<ArrayList<String>> listas = obtenerListas(file);
+                for (ArrayList<String> t : listas) {
+                    if (t.size() == 5) {
+                        DefaultMutableTreeNode a = new DefaultMutableTreeNode(t.get(0).replace(",", ""));
+                        DefaultMutableTreeNode b = new DefaultMutableTreeNode(t.get(1).replace(",", ""));
+                        DefaultMutableTreeNode c = new DefaultMutableTreeNode(t.get(2).replace(",", ""));
+                        DefaultMutableTreeNode d = new DefaultMutableTreeNode(t.get(3).replace(",", ""));
+                        DefaultMutableTreeNode e = new DefaultMutableTreeNode(t.get(4).replace(",", ""));
+                        ((DefaultMutableTreeNode)raiz.getChildAt(0)).add(a);
+                        a.add(b);
+                        a.add(c);
+                        a.add(d);
+                        a.add(e);
+                    }
+                }
+                m.reload();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btn_actualizartree1MouseClicked
+
+    public void modeloDefault() {
+        DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Dia");
+        DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Venta");
+        treeNode1.add(treeNode2);
+        TreeAct.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+    }
+
     public DefaultComboBoxModel actualizarcbCarro() {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (Vehiculo t : carros) {
@@ -980,6 +1032,7 @@ public class FrameM extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTree TreeAct;
     private javax.swing.JButton btn_actualizartree1;
     private javax.swing.JButton btn_actualizartree2;
     private javax.swing.JButton btn_crearCliente;
@@ -1019,7 +1072,6 @@ public class FrameM extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTree jTree1;
-    private javax.swing.JTree jTree2;
     private com.toedter.calendar.JYearChooser jYearChooser1;
     private javax.swing.JPanel panel_asignarV;
     private javax.swing.JPanel panel_crearCliente;
