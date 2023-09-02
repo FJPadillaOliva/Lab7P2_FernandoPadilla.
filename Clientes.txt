@@ -5,3 +5,10 @@
 	5,
 	1000000.0
 ];
+[
+	Josue,
+	22,
+	Ingeniero en Sistemas,
+	2,
+	4000000.0
+];

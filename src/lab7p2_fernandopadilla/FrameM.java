@@ -609,6 +609,11 @@ public class FrameM extends javax.swing.JFrame {
         });
 
         btn_actualizartree2.setText("Actualizar Tree de Admin");
+        btn_actualizartree2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_actualizartree2MouseClicked(evt);
+            }
+        });
 
         btn_editarJSON.setText("Editar JSON");
         btn_editarJSON.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -934,12 +939,10 @@ public class FrameM extends javax.swing.JFrame {
         DefaultMutableTreeNode raiz
                 = (DefaultMutableTreeNode) m.getRoot();
         try {
-            JFileChooser jfc = new JFileChooser("./");
+            JFileChooser jfc = new JFileChooser("./actividades");
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo de texto", "txt");
             jfc.setFileFilter(filtro);
             File file = null;
-            FileReader fr = null;
-            BufferedReader br = null;
             int select = jfc.showOpenDialog(this);
             if (select == JFileChooser.APPROVE_OPTION) {
                 file = jfc.getSelectedFile();
@@ -951,7 +954,7 @@ public class FrameM extends javax.swing.JFrame {
                         DefaultMutableTreeNode c = new DefaultMutableTreeNode(t.get(2).replace(",", ""));
                         DefaultMutableTreeNode d = new DefaultMutableTreeNode(t.get(3).replace(",", ""));
                         DefaultMutableTreeNode e = new DefaultMutableTreeNode(t.get(4).replace(",", ""));
-                        ((DefaultMutableTreeNode)raiz.getChildAt(0)).add(a);
+                        ((DefaultMutableTreeNode) raiz.getChildAt(0)).add(a);
                         a.add(b);
                         a.add(c);
                         a.add(d);
@@ -965,11 +968,97 @@ public class FrameM extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_actualizartree1MouseClicked
 
+    private void btn_actualizartree2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_actualizartree2MouseClicked
+        // TODO add your handling code here:
+        modeloDefault2();
+        DefaultTreeModel m = (DefaultTreeModel) jTree1.getModel();
+        DefaultMutableTreeNode raiz
+                = (DefaultMutableTreeNode) m.getRoot();
+        DefaultMutableTreeNode vehi = new DefaultMutableTreeNode("Vehiculos");
+        DefaultMutableTreeNode vend = new DefaultMutableTreeNode("Vendedores");
+        DefaultMutableTreeNode client = new DefaultMutableTreeNode("Clientes");
+        DefaultMutableTreeNode vent = new DefaultMutableTreeNode("Ventas");
+        raiz.add(vehi);
+        raiz.add(vend);
+        raiz.add(client);
+        raiz.add(vent);
+        int cont = 1;
+        try {
+            File Vehiculos = new File("./Carros.txt");
+            File Vendedores = new File("./Vendedores.txt");
+            File Clientes = new File("./Clientes.txt");
+            File Ventas = new File("./Ventas.txt");
+            ArrayList<ArrayList<String>> listasVehiculos = obtenerListas(Vehiculos);
+            ArrayList<ArrayList<String>> listasVendedores = obtenerListas(Vendedores);
+            ArrayList<ArrayList<String>> listasClientes = obtenerListas(Clientes);
+            ArrayList<ArrayList<String>> listasVentas = obtenerListas(Ventas);
+            for (ArrayList<String> t : listasVehiculos) {
+                DefaultMutableTreeNode a = new DefaultMutableTreeNode(t.get(0).replace(",", ""));
+                DefaultMutableTreeNode b = new DefaultMutableTreeNode(t.get(1).replace(",", ""));
+                DefaultMutableTreeNode c = new DefaultMutableTreeNode(t.get(2).replace(",", ""));
+                DefaultMutableTreeNode d = new DefaultMutableTreeNode(t.get(3).replace(",", ""));
+                DefaultMutableTreeNode e = new DefaultMutableTreeNode(t.get(4).replace(",", ""));
+                DefaultMutableTreeNode f = new DefaultMutableTreeNode(t.get(5).replace(",", ""));
+                e.add(a);
+                e.add(b);
+                e.add(c);
+                e.add(d);
+                e.add(f);
+                vehi.add(e);
+            }
+            for (ArrayList<String> t : listasVendedores) {
+                DefaultMutableTreeNode a = new DefaultMutableTreeNode(t.get(0).replace(",", ""));
+                DefaultMutableTreeNode b = new DefaultMutableTreeNode(t.get(1).replace(",", ""));
+                DefaultMutableTreeNode c = new DefaultMutableTreeNode(t.get(2).replace(",", ""));
+                a.add(b);
+                a.add(c);
+                vend.add(a);
+            }
+
+            for (ArrayList<String> t : listasClientes) {
+                DefaultMutableTreeNode a = new DefaultMutableTreeNode(t.get(0).replace(",", ""));
+                DefaultMutableTreeNode b = new DefaultMutableTreeNode(t.get(1).replace(",", ""));
+                DefaultMutableTreeNode c = new DefaultMutableTreeNode(t.get(2).replace(",", ""));
+                DefaultMutableTreeNode d = new DefaultMutableTreeNode(t.get(3).replace(",", ""));
+                DefaultMutableTreeNode e = new DefaultMutableTreeNode(t.get(4).replace(",", ""));
+                a.add(b);
+                a.add(c);
+                a.add(d);
+                a.add(e);
+                client.add(a);
+            }
+
+            for (ArrayList<String> t : listasVentas) {
+                DefaultMutableTreeNode a = new DefaultMutableTreeNode(cont);
+                DefaultMutableTreeNode b = new DefaultMutableTreeNode(t.get(0).replace(",", ""));
+                DefaultMutableTreeNode c = new DefaultMutableTreeNode(t.get(1).replace(",", ""));
+                DefaultMutableTreeNode d = new DefaultMutableTreeNode(t.get(2).replace(",", ""));
+                DefaultMutableTreeNode e = new DefaultMutableTreeNode(t.get(3).replace(",", ""));
+                DefaultMutableTreeNode f = new DefaultMutableTreeNode(t.get(4).replace(",", ""));
+                a.add(b);
+                a.add(c);
+                a.add(d);
+                a.add(e);
+                a.add(f);
+                vent.add(a);
+                cont++;
+            }
+            m.reload();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btn_actualizartree2MouseClicked
+
     public void modeloDefault() {
         DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Dia");
         DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Venta");
         treeNode1.add(treeNode2);
-        TreeAct.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        TreeAct.setModel(new DefaultTreeModel(treeNode1));
+    }
+
+    public void modeloDefault2() {
+        DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Admin");
+        jTree1.setModel(new DefaultTreeModel(treeNode1));
     }
 
     public DefaultComboBoxModel actualizarcbCarro() {

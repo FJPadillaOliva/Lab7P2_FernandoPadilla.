@@ -5,3 +5,17 @@
 	15000.0,
 	1
 ];
+[
+	Daniel,
+	Josue,
+	Koenisegg Jesko,
+	300000.0,
+	4
+];
+[
+	Daniel,
+	Josue,
+	Honda Civic,
+	100000.0,
+	3
+];
