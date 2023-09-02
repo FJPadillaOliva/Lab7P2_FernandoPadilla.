@@ -11,7 +11,9 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JColorChooser;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -30,6 +32,7 @@ public class FrameM extends javax.swing.JFrame {
     ArrayList<Vendedor> vendedores = new ArrayList();
     ArrayList<Cliente> clientes = new ArrayList();
     ArrayList<Venta> ventas = new ArrayList();
+    File archivo = null;
 
     int idCarro = 0;
 
@@ -46,6 +49,11 @@ public class FrameM extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        btn_guardarcambios = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panel_crearVehiculo = new javax.swing.JPanel();
@@ -94,8 +102,60 @@ public class FrameM extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTree2 = new javax.swing.JTree();
         btn_finalizar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_actualizartree1 = new javax.swing.JButton();
+        btn_actualizartree2 = new javax.swing.JButton();
+        btn_editarJSON = new javax.swing.JButton();
+
+        jPanel3.setBackground(new java.awt.Color(0, 153, 51));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane3.setViewportView(jTextArea1);
+
+        btn_guardarcambios.setText("Guardar");
+        btn_guardarcambios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_guardarcambiosMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(182, Short.MAX_VALUE)
+                .addComponent(btn_guardarcambios, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(175, 175, 175))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_guardarcambios, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -422,9 +482,16 @@ public class FrameM extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Actualizar Tree de Actividad");
+        btn_actualizartree1.setText("Actualizar Tree de Actividad");
 
-        jButton3.setText("Actualizar Tree de Admin");
+        btn_actualizartree2.setText("Actualizar Tree de Admin");
+
+        btn_editarJSON.setText("Editar JSON");
+        btn_editarJSON.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_editarJSONMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -435,11 +502,12 @@ public class FrameM extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_finalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))
+                    .addComponent(btn_actualizartree1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                    .addComponent(btn_actualizartree2, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                    .addComponent(btn_editarJSON, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -450,9 +518,11 @@ public class FrameM extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btn_finalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_actualizartree1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_actualizartree2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_editarJSON, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -680,6 +750,36 @@ public class FrameM extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_finalizarMouseClicked
 
+    private void btn_guardarcambiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarcambiosMouseClicked
+        // TODO add your handling code here:
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        if (JOptionPane.showConfirmDialog(rootPane, "Desea Guardar los cambios", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {   
+        try {
+                fw = new FileWriter(archivo, false);
+                bw = new BufferedWriter(fw);
+                bw.write(jTextArea1.getText());
+                bw.flush();
+                fw.close();
+                bw.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } 
+        }
+        
+    }//GEN-LAST:event_btn_guardarcambiosMouseClicked
+
+    private void btn_editarJSONMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editarJSONMouseClicked
+        // TODO add your handling code here:
+        try {
+            JFileChooser jfc= new JFileChooser();
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo de texto", ".txt");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_btn_editarJSONMouseClicked
+
     public DefaultComboBoxModel actualizarcbCarro() {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (Vehiculo t : carros) {
@@ -740,16 +840,19 @@ public class FrameM extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_actualizartree1;
+    private javax.swing.JButton btn_actualizartree2;
     private javax.swing.JButton btn_crearCliente;
     private javax.swing.JButton btn_crearVehiculo;
     private javax.swing.JButton btn_crearVendedor;
+    private javax.swing.JButton btn_editarJSON;
     private javax.swing.JButton btn_finalizar;
+    private javax.swing.JButton btn_guardarcambios;
     private javax.swing.JButton btn_vender;
     private javax.swing.JComboBox<String> cb_Cliente;
     private javax.swing.JComboBox<String> cb_Vendedor;
     private javax.swing.JComboBox<String> cb_carro;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -768,10 +871,13 @@ public class FrameM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSpinner jSpinner_edad;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTree jTree1;
     private javax.swing.JTree jTree2;
     private com.toedter.calendar.JYearChooser jYearChooser1;
