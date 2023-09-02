@@ -5,9 +5,12 @@
 package lab7p2_fernandopadilla;
 
 import java.awt.Color;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JColorChooser;
@@ -26,6 +29,13 @@ public class FrameM extends javax.swing.JFrame {
      */
     public FrameM() {
         initComponents();
+        inicializarListaCarro();
+        inicializarListaVendedor();
+        inicializarListaCliente();
+        inicializarListaVenta();
+        cb_carro.setModel(actualizarcbCarro());
+        cb_Cliente.setModel(actualizarcbCliente());
+        cb_Vendedor.setModel(actualizarcbVendedor());
     }
 
     ArrayList<Vehiculo> carros = new ArrayList();
@@ -36,8 +46,113 @@ public class FrameM extends javax.swing.JFrame {
 
     int idCarro = 0;
 
-    private void inicializaridCarro() {
+    public void inicializarListaCarro() {
+        
+        try {
+            File file = new File("./Carros.txt");
+            ArrayList<ArrayList<String>> listas = obtenerListas(file);
+            for (ArrayList<String> t : listas) {   
+                if (t.size() == 6) {
+                    String marca = t.get(0).replace(",", "");
+                    String color = t.get(1).replace(",", "");
+                    String modelo = t.get(2).replace(",", "");
+                    String año = String.valueOf(t.get(3).replace(",", ""));
+                    int id = Integer.parseInt(t.get(4).replace(",", ""));
+                    double precio = Double.parseDouble(t.get(5).replace(",", ""));
+                    carros.add(new Vehiculo(marca, color, modelo, año, precio, id));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void inicializarListaVendedor() {
+        
+        try {
+            File file = new File("./Vendedores.txt");
+            ArrayList<ArrayList<String>> listas = obtenerListas(file);
+            for (ArrayList<String> t : listas) {   
+                if (t.size() == 3) {
+                    String nombre = t.get(0).replace(",", "");
+                    String CV = t.get(1).replace(",", "");
+                    String dineroG = t.get(2).replace(",", "");
+                    vendedores.add(new Vendedor(nombre, Integer.parseInt(CV), Double.parseDouble(dineroG)));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void inicializarListaCliente() {
+        
+        try {
+            File file = new File("./Clientes.txt");
+            ArrayList<ArrayList<String>> listas = obtenerListas(file);
+            for (ArrayList<String> t : listas) {   
+                if (t.size() == 5) {
+                    String nombre = t.get(0).replace(",", "");
+                    String edad = t.get(1).replace(",", "");
+                    String profesion = t.get(2).replace(",", "");
+                    String CC = t.get(3).replace(",", "");
+                    String sueldo = t.get(4).replace(",", "");
+                    clientes.add(new Cliente(nombre, Integer.parseInt(edad), profesion, Integer.parseInt(CC), Double.parseDouble(sueldo)));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void inicializarListaVenta() {
+        
+        try {
+            File file = new File("./Ventas.txt");
+            ArrayList<ArrayList<String>> listas = obtenerListas(file);
+            for (ArrayList<String> t : listas) {   
+                if (t.size() == 5) {
+                    String vendedor = t.get(0).replace(",", "");
+                    String cliente = t.get(1).replace(",", "");
+                    String carro = t.get(2).replace(",", "");
+                    double precio = Double.parseDouble(t.get(3).replace(",", ""));
+                    int id = Integer.parseInt(t.get(4).replace(",", ""));
+                    ventas.add(new Venta(vendedor, cliente, precio, carro, id));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void inicializaridCarro() {
+
+    }
+
+    public static ArrayList<ArrayList<String>> obtenerListas(File file) throws IOException {
+        ArrayList<ArrayList<String>> listas = new ArrayList<>();
+        ArrayList<String> listaActual = null;
+        BufferedReader br = null;
+        FileReader fr = null;
+        try {
+            fr = new FileReader(file);
+            br = new BufferedReader(fr);
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                if (linea.contains("[")) {
+                    listaActual = new ArrayList<>();
+                } else if (linea.contains("]")) {
+                    if (listaActual != null) {
+                        listas.add(listaActual);
+                    }
+                } else if (listaActual != null && !linea.trim().isEmpty()) {
+                    listaActual.add(linea.trim());
+                }
+            }
+        } catch (Exception e) {
+        }
+
+        return listas;
     }
 
     /**
@@ -573,7 +688,6 @@ public class FrameM extends javax.swing.JFrame {
             double precioV = Double.parseDouble(tf_precio.getText());
             carros.add(new Vehiculo(marca, color, modelo, año, precioV, idCarro));
             cb_carro.setModel(actualizarcbCarro());
-            idCarro++;
             File file = null;
             FileWriter fw = null;
             BufferedWriter bw = null;
@@ -586,11 +700,13 @@ public class FrameM extends javax.swing.JFrame {
                         + "\t" + color + ",\n"
                         + "\t" + modelo + ",\n"
                         + "\t" + año + ",\n"
-                        + "\t" + precioV + "\n]\n";
+                        + "\t" + idCarro + ",\n"
+                        + "\t" + precioV + "\n];\n";
                 bw.write(lineas);
                 bw.flush();
                 fw.close();
                 bw.close();
+                idCarro++;
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -622,7 +738,7 @@ public class FrameM extends javax.swing.JFrame {
                 String lineas = "[\n"
                         + "\t" + nombre + ",\n"
                         + "\t" + cantCV + ",\n"
-                        + "\t" + cantDG + "\n]\n";
+                        + "\t" + cantDG + "\n];\n";
                 bw.write(lineas);
                 bw.flush();
                 fw.close();
@@ -664,7 +780,7 @@ public class FrameM extends javax.swing.JFrame {
                         + "\t" + edad + ",\n"
                         + "\t" + profesion + ",\n"
                         + "\t" + cantCC + ",\n"
-                        + "\t" + sueldoD + "\n]\n";
+                        + "\t" + sueldoD + "\n];\n";
                 bw.write(lineas);
                 bw.flush();
                 fw.close();
@@ -691,7 +807,7 @@ public class FrameM extends javax.swing.JFrame {
             String carroV = carro.getMarca() + " " + carro.getModelo();
             double costo = carro.getPrecioV();
             int idCarro = carro.getIdCarro();
-            ventas.add(new Venta(vend, client, costo, carroV,idCarro));
+            ventas.add(new Venta(vend, client, costo, carroV, idCarro));
             File file = null;
             FileWriter fw = null;
             BufferedWriter bw = null;
@@ -703,7 +819,8 @@ public class FrameM extends javax.swing.JFrame {
                         + "\t" + vend + ",\n"
                         + "\t" + client + ",\n"
                         + "\t" + carroV + ",\n"
-                        + "\t" + costo + "\n]\n";
+                        + "\t" + costo + ",\n"
+                        + "\t" +idCarro +"\n];\n";
                 bw.write(lineas);
                 bw.flush();
                 fw.close();
@@ -737,13 +854,15 @@ public class FrameM extends javax.swing.JFrame {
                             + "\t" + t.getCliente() + ",\n"
                             + "\t" + t.getVendedor() + ",\n"
                             + "\t" + t.getCarroV() + ",\n"
-                            + "\t" + t.getIdCarro() + "\n]\n";
+                            + "\t" + t.getIdCarro() + "\n];\n";
                     bw.write(lineas);
                     cont++;
                 }
                 bw.flush();
                 fw.close();
                 bw.close();
+                ventas.clear();
+                JOptionPane.showMessageDialog(this, "Actividades guardadas exitosamente");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -754,8 +873,8 @@ public class FrameM extends javax.swing.JFrame {
         // TODO add your handling code here:
         FileWriter fw = null;
         BufferedWriter bw = null;
-        if (JOptionPane.showConfirmDialog(rootPane, "Desea Guardar los cambios", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {   
-        try {
+        if (JOptionPane.showConfirmDialog(this, "Desea Guardar los cambios", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            try {
                 fw = new FileWriter(archivo, false);
                 bw = new BufferedWriter(fw);
                 bw.write(jTextArea1.getText());
@@ -764,20 +883,39 @@ public class FrameM extends javax.swing.JFrame {
                 bw.close();
             } catch (Exception e) {
                 e.printStackTrace();
-            } 
+            }
         }
-        
+
     }//GEN-LAST:event_btn_guardarcambiosMouseClicked
 
     private void btn_editarJSONMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editarJSONMouseClicked
         // TODO add your handling code here:
         try {
-            JFileChooser jfc= new JFileChooser();
-            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo de texto", ".txt");
+            JFileChooser jfc = new JFileChooser();
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo de texto", "txt");
+            jfc.setFileFilter(filtro);
+            FileReader fr = null;
+            BufferedReader br = null;
+            int select = jfc.showOpenDialog(this);
+            if (select == JFileChooser.APPROVE_OPTION) {
+                archivo = jfc.getSelectedFile();
+                fr = new FileReader(archivo);
+                br = new BufferedReader(fr);
+                String linea;
+                jTextArea1.setText("");
+                while ((linea = br.readLine()) != null) {
+                    jTextArea1.append(linea);
+                    jTextArea1.append("\n");
+                }
+                jDialog1.setModal(true);
+                jDialog1.setLocationRelativeTo(this);
+                jDialog1.pack();
+                jDialog1.setVisible(true);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }//GEN-LAST:event_btn_editarJSONMouseClicked
 
     public DefaultComboBoxModel actualizarcbCarro() {

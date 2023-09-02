@@ -1,14 +1,7 @@
 [
-	Fernando,
+	Carlos,
 	18,
-	Universitario,
-	0,
-	500000.0
-]
-[
-	Cooper,
-	20,
 	Piloto,
 	2,
-	3.0E7
-]
+	50000.0
+];
