@@ -1,28 +1,28 @@
 [
-	Jesus,
+	1,
 	Mario,
+	Jesus,
 	Toyota Corolla,
-	110000.0,
 	1
 ];
 [
-	Josue,
+	2,
 	Lloyd,
+	Josue,
 	Tesla Plaid,
-	1000000.0,
 	3
 ];
 [
-	Josue,
+	3,
 	Andrea,
+	Josue,
 	Honda Civic SI,
-	200000.0,
 	2
 ];
 [
-	Josue,
+	4,
 	Mario,
+	Josue,
 	Koenisegg Jesko,
-	5000000.0,
 	4
 ];

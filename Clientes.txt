@@ -1,14 +1,21 @@
 [
-	Lloyd,
-	18,
-	Piloto,
-	5,
-	1000000.0
+	Mario,
+	26,
+	Ingeniero en Sistemas,
+	4,
+	600000.0
 ];
 [
-	Josue,
-	22,
-	Ingeniero en Sistemas,
+	Lloyd,
+	20,
+	Universitario,
+	1,
+	100000.0
+];
+[
+	Andrea,
+	21,
+	Abogada,
 	2,
-	4000000.0
+	200000.0
 ];
