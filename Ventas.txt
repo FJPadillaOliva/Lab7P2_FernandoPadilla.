@@ -1,7 +1,7 @@
 [
 	Jesus,
-	Carlos,
+	Lloyd,
 	Toyota Corolla,
-	20000.0,
-	0
+	15000.0,
+	1
 ];

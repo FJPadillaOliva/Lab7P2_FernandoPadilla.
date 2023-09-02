@@ -36,6 +36,8 @@ public class FrameM extends javax.swing.JFrame {
         cb_carro.setModel(actualizarcbCarro());
         cb_Cliente.setModel(actualizarcbCliente());
         cb_Vendedor.setModel(actualizarcbVendedor());
+        inicializaridCarro();
+        System.out.println(idCarro);
     }
 
     ArrayList<Vehiculo> carros = new ArrayList();
@@ -44,7 +46,7 @@ public class FrameM extends javax.swing.JFrame {
     ArrayList<Venta> ventas = new ArrayList();
     File archivo = null;
 
-    int idCarro = 0;
+    int idCarro = 1;
 
     public void inicializarListaCarro() {
         
@@ -126,7 +128,7 @@ public class FrameM extends javax.swing.JFrame {
     }
 
     public void inicializaridCarro() {
-
+        idCarro = carros.size() + 1;
     }
 
     public static ArrayList<ArrayList<String>> obtenerListas(File file) throws IOException {

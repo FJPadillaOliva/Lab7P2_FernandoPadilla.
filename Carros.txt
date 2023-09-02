@@ -2,7 +2,23 @@
 	Toyota,
 	Azul,
 	Corolla,
+	2021,
+	1,
+	15000.0
+];
+[
+	Tesla,
+	Blanco,
+	Plaid,
 	2023,
-	0,
-	20000.0
+	2,
+	500000.0
+];
+[
+	Honda,
+	Gris,
+	Civic,
+	2023,
+	3,
+	100000.0
 ];
